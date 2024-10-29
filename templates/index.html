@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sentiment Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <h1>🔍 AI Sentiment Analyzer</h1>
+            <p>Paste your review below and let our AI analyze the sentiment.</p>
+            <form action="/predict" method="post">
+                <textarea name="review" placeholder="Enter your review here..." required>{{ review if review else '' }}</textarea>
+                <button type="submit">Analyze Sentiment</button>
+            </form>
+
+            {% if result %}
+            <div class="result">
+                <h2>Sentiment Result:</h2>
+                <p>{{ result }}</p>
+                <img src="{{ gif_path }}" alt="Sentiment Image" class="sentiment-gif">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
